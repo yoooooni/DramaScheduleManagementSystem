@@ -27,11 +27,17 @@ public class MenuManager {
 			int date = input.nextInt();
 			break;
 		case 2 :
+			System.out.print("Food Name:");
+			String deleteFoodName = input.next();
+			break;
 		case 3 :
+			System.out.print("Food Name:");
+			String EditFoodName = input.next();
+			break;
 		case 4 : 
 			System.out.print("Food Name:");
-		    String foodName2 = input.next();
-			
+		    String ViewFoodName = input.next();
+			break;
 		}
 		
 	}
