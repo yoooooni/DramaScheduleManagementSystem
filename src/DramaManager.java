@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DramaManager {
+public class DramaManager {//////
    ArrayList<DramaSchedule> dramaSchedules = new ArrayList<DramaSchedule>();
    Scanner input;
    DramaManager(Scanner input) {
