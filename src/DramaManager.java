@@ -127,7 +127,7 @@ public class DramaManager {
    public void viewDramaSchedule() {
 //      System.out.print("drama name:");
 //     String dramaname1 = input.next();
-     System.out.println("#of registered students: " + dramaSchedules.size());
+     System.out.println("#of registered dramas: " + dramaSchedules.size());
      for(int i=0; i<dramaSchedules.size();i++) {
         dramaSchedules.get(i).printInfo();
      }
