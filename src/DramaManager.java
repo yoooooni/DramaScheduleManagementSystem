@@ -3,11 +3,13 @@ import java.util.Scanner;
 
 import drama.DramaKind;
 import drama.DramaSchedule;
+import drama.DramaScheduleInput;
 import drama.HistoricalDramaSchedule;
 import drama.MedicalDramaSchedule;
+import drama.RomansDramaSchedule;
 
 public class DramaManager {
-   ArrayList<DramaSchedule> dramaSchedules = new ArrayList<DramaSchedule>();
+   ArrayList<DramaScheduleInput> dramaSchedules = new ArrayList<DramaScheduleInput>();
    Scanner input;
    DramaManager(Scanner input) {
       this.input = input;
@@ -15,7 +17,7 @@ public class DramaManager {
 
    public void addDramaSchedule() {
       int kind=0;
-      DramaSchedule dramaSchedule;
+      DramaScheduleInput dramaScheduleInput;
       while (kind !=1&kind!=2) {
          System.out.println("1 for Romance Drama"); 
          System.out.println("2 for Historical Drama");
@@ -23,21 +25,21 @@ public class DramaManager {
          System.out.print("Select num 1, 2, or 3 for drama kind:"); 
          kind = input.nextInt();
          if (kind==1) {
-            dramaSchedule = new DramaSchedule(DramaKind.RomansDrama);
-            dramaSchedule.getUserInput(input);
-            dramaSchedules.add(dramaSchedule);
+            dramaScheduleInput = new RomansDramaSchedule(DramaKind.RomansDrama);
+            dramaScheduleInput.getUserInput(input);
+            dramaSchedules.add(dramaScheduleInput);
             break;
          }
          else if(kind ==2) {
-            dramaSchedule = new HistoricalDramaSchedule(DramaKind.HistoricalDrama);
-            dramaSchedule.getUserInput(input);
-            dramaSchedules.add(dramaSchedule);
+            dramaScheduleInput = new HistoricalDramaSchedule(DramaKind.HistoricalDrama);
+            dramaScheduleInput.getUserInput(input);
+            dramaSchedules.add(dramaScheduleInput);
             break;
          }
          else if(kind ==3) {
-             dramaSchedule = new MedicalDramaSchedule(DramaKind.MedicalDrama);
-             dramaSchedule.getUserInput(input);
-             dramaSchedules.add(dramaSchedule);
+             dramaScheduleInput = new MedicalDramaSchedule(DramaKind.MedicalDrama);
+             dramaScheduleInput.getUserInput(input);
+             dramaSchedules.add(dramaScheduleInput);
              break;
           }
          else {
@@ -73,8 +75,8 @@ public class DramaManager {
       System.out.print("drama name:");
       String dramaname = input.next();
       for(int i=0; i<dramaSchedules.size();i++) {
-         DramaSchedule dramaschedule = dramaSchedules.get(i);
-         if(dramaschedule.getDramaname().equals(dramaname)) {
+         DramaScheduleInput dramascheduleInput = dramaSchedules.get(i);
+         if(dramascheduleInput.getDramaname().equals(dramaname)) {
             int num = -1;
 
             while(num != 5) {
@@ -90,25 +92,25 @@ public class DramaManager {
                if (num == 1) {
                   System.out.print("dramaname: ");
                   String dramaname1 = input.next();
-                  dramaschedule.setDramaname(dramaname1);
+                  dramascheduleInput.setDramaname(dramaname1);
                }
 
                else if (num == 2) {
                   System.out.print("dramachannel: ");
                   String dramachannel = input.next();
-                  dramaschedule.setDramachannel(dramachannel);
+                  dramascheduleInput.setDramachannel(dramachannel);
                }
 
                else if (num == 3) {
                   System.out.print("runningtime: ");
                   int runningtime = input.nextInt();
-                  dramaschedule.setRunningtime(runningtime);
+                  dramascheduleInput.setRunningtime(runningtime);
                }
 
                else if (num == 4) {
                   System.out.print("episodes: ");
                   int episodes = input.nextInt();
-                  dramaschedule.setEpisodes(episodes);
+                  dramascheduleInput.setEpisodes(episodes);
                }
 
                else {
