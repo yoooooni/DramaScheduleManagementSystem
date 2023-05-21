@@ -2,90 +2,50 @@ package drama;
 
 import java.util.Scanner;
 
-public class MedicalDramaSchedule extends DramaSchedule implements DramaScheduleInput{
+import exception.ChannelFormatException;
 
-   protected int prevRunningtime;
-   protected int prevEpisodes;
+public class MedicalDramaSchedule extends AllDrama {
 
-   public MedicalDramaSchedule(DramaKind kind) {
-      this.kind = kind;
-   }
+	protected int prevRunningtime;
+	protected int prevEpisodes;
 
-   public void getUserInput( Scanner input) {
-      System.out.print("drama name:");
-      String dramaname = input.next();
-      this.setDramaname(dramaname);
+	public MedicalDramaSchedule(DramaKind kind) {
+		super(kind);
+	}
 
+	public void getUserInput(Scanner input) {
+		setDramaName(input);
+		setDramaChannelwithYN(input);
+		setRerunDramaChannelwithYN(input);
+		setDramaRunningtime(input);
+		setDramaEpisodes(input);
+	}
 
-      char answer = 'x';
-      while(answer != 'y'&& answer != 'Y' && answer != 'N' && answer != 'n') {
-         System.out.print("do you know the drama channel? (Y/N)");
-         answer = input.next().charAt(0);
-         if(answer == 'Y'||answer=='y') {
-            System.out.print("drama channel name:");
-            String dramachannel = input.next();
-            this.setDramachannel(dramachannel);
-         }
-         else if(answer == 'N'||answer=='n'){
-            this.setDramachannel("no information");
-         }
-         else {
-         }
-      }
+	public void setRerunDramaChannelwithYN(Scanner input) {
+		char answer = 'x';
+		while (answer != 'y' && answer != 'Y' && answer != 'N' && answer != 'n') {
+			System.out.print("do you know the rerun drama channel? (Y/N)");
+			answer = input.next().charAt(0);
+			try {
+				if (answer == 'Y' || answer == 'y') {
+					setDramaChannel(input);
+				} else if (answer == 'N' || answer == 'n') {
+					this.setDramachannel("no information");
+				} 
+				else {
+				}
+			}
+			catch (ChannelFormatException e) {
+				System.out.println("Incorrect broadcaster Format. put the channel that contains S.");
+			}
+		}
+	}
 
-      answer = 'x';
-      while(answer != 'y'&& answer != 'Y' && answer != 'N' && answer != 'n') {
-         System.out.print("do you know the rerun drama channel? (Y/N)");
-         answer = input.next().charAt(0);
-         if(answer == 'Y'||answer=='y') {
-            System.out.print("drama rerun channel name:");
-            String dramachannel = input.next();
-            this.setDramachannel(dramachannel);
-         }
-         else if(answer == 'N'||answer=='n'){
-            this.setDramachannel("no information");
-         }
-         else {
-         }
-      }
-
-      System.out.print("drama running time(Minutes): ");
-      int dramarunningtime = input.nextInt();
-      this.setRunningtime(dramarunningtime);
-
-
-      System.out.print("The number of episodes in a drama: ");
-      int episodes = input.nextInt();
-      this.setEpisodes(episodes);
-   }
-   public void printInfo() {
-      String skind = "none";
-      switch(this.kind) {
-      case RomansDrama:
-         skind = "Romans";
-         break;
-      case HistoricalDrama:
-         skind = "Historical";
-         break;
-      case FantasyDrama:
-         skind = "Fantasy";
-         break;
-      case ThrillerDrama:
-         skind = "Thriller";
-         break;
-      case ActionDrama:
-         skind = "Action";
-         break;
-      case CrimeDrama:
-         skind = "Crime";
-         break;
-      case MedicalDrama:
-         skind = "Medical";
-         break;
-      default:
-
-      }
-      System.out.println("kind:" + skind + ", dramaname: " + dramaname + ", channel: " + dramachannel + ", runningtime: " + runningtime + ", episodes: " + episodes  + ", prev runningtime: " + runningtime + ", prev episodes: " + episodes);
-   }
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println("kind:" + skind + ", dramaname: " + dramaname + ", channel: " + dramachannel
+				+ ", runningtime: " + runningtime + ", episodes: " + episodes + ", prev runningtime: " + runningtime
+				+ ", prev episodes: " + episodes);
+	}
 
 }
