@@ -39,7 +39,7 @@ public abstract class AllDrama extends DramaSchedule {
 				}
 			} 
 			catch (ChannelFormatException e) {
-				System.out.println("Incorrect broadcaster Format. put the channel that contains S.");
+				System.out.println("Incorrect broadcaster Format. put the channel that contains terrestrial broadcasting channel.");
 			}
 		}
 	}

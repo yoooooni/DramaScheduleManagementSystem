@@ -10,7 +10,7 @@ public class RomansDramaSchedule extends AllDrama {
 
 	public void getUserInput(Scanner input) {
 		setDramaName(input);
-		setDramaChannel(input);
+		setDramaChannelwithYN(input);
 		setDramaRunningtime(input);
 		setDramaEpisodes(input);
 	}
