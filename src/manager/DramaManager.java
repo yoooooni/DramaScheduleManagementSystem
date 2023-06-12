@@ -1,9 +1,11 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import drama.DramaKind;
+import drama.DramaSchedule;
 import drama.DramaScheduleInput;
 import drama.HistoricalDramaSchedule;
 import drama.MedicalDramaSchedule;
@@ -126,6 +128,14 @@ public class DramaManager implements Serializable{
       for (int i = 0; i < dramaSchedules.size(); i++) {
          dramaSchedules.get(i).printInfo();
       }
+   }
+   
+   public int size() {
+	   return dramaSchedules.size();
+   }
+   
+   public DramaScheduleInput get(int index) {
+	   return (DramaSchedule) dramaSchedules.get(index);
    }
 
    public void showEditMenu() {
